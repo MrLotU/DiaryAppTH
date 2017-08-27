@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		083B882D1F52E38500E74BEC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083B882C1F52E38500E74BEC /* Location.swift */; };
+		083B882F1F52E54400E74BEC /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083B882E1F52E54400E74BEC /* Entry.swift */; };
+		083B88321F52E77A00E74BEC /* CDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083B88311F52E77A00E74BEC /* CDController.swift */; };
 		084AC17B1F52CDC400E057AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AC17A1F52CDC400E057AB /* AppDelegate.swift */; };
 		084AC17D1F52CDC400E057AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AC17C1F52CDC400E057AB /* ViewController.swift */; };
 		084AC1801F52CDC400E057AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 084AC17E1F52CDC400E057AB /* Main.storyboard */; };
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		083B882C1F52E38500E74BEC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		083B882E1F52E54400E74BEC /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		083B88311F52E77A00E74BEC /* CDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDController.swift; sourceTree = "<group>"; };
 		084AC1771F52CDC400E057AB /* Today.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Today.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		084AC17A1F52CDC400E057AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		084AC17C1F52CDC400E057AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		083B88301F52E76700E74BEC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				083B88311F52E77A00E74BEC /* CDController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		084AC16E1F52CDC400E057AB = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +93,14 @@
 		084AC1791F52CDC400E057AB /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				083B88301F52E76700E74BEC /* Controller */,
+				084AC19D1F52DA3D00E057AB /* Model */,
 				084AC17A1F52CDC400E057AB /* AppDelegate.swift */,
 				084AC17C1F52CDC400E057AB /* ViewController.swift */,
 				084AC17E1F52CDC400E057AB /* Main.storyboard */,
 				084AC1841F52CDC400E057AB /* Assets.xcassets */,
 				084AC1861F52CDC400E057AB /* LaunchScreen.storyboard */,
 				084AC1891F52CDC400E057AB /* Info.plist */,
-				084AC1811F52CDC400E057AB /* Today.xcdatamodeld */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -97,6 +112,16 @@
 				084AC1941F52CDC400E057AB /* Info.plist */,
 			);
 			path = TodayTests;
+			sourceTree = "<group>";
+		};
+		084AC19D1F52DA3D00E057AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				084AC1811F52CDC400E057AB /* Today.xcdatamodeld */,
+				083B882C1F52E38500E74BEC /* Location.swift */,
+				083B882E1F52E54400E74BEC /* Entry.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +229,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				083B88321F52E77A00E74BEC /* CDController.swift in Sources */,
+				083B882F1F52E54400E74BEC /* Entry.swift in Sources */,
 				084AC1831F52CDC400E057AB /* Today.xcdatamodeld in Sources */,
 				084AC17D1F52CDC400E057AB /* ViewController.swift in Sources */,
+				083B882D1F52E38500E74BEC /* Location.swift in Sources */,
 				084AC17B1F52CDC400E057AB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +444,7 @@
 				084AC1991F52CDC400E057AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		084AC19A1F52CDC400E057AB /* Build configuration list for PBXNativeTarget "TodayTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +453,7 @@
 				084AC19C1F52CDC400E057AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
