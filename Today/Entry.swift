@@ -48,6 +48,7 @@ class Entry: NSManagedObject {
     class func entryWith(_ content: String, location: CLLocation, image: UIImage) -> Entry {
         let entry = entryWith(content, image: image)
         entry.location = Location.locationWith(location.coordinate.latitude, longtitude: location.coordinate.longitude)
+        return entry
     }
 }
 
@@ -58,6 +59,10 @@ extension Entry {
     @NSManaged var location: Location?
     
     var photoImage: UIImage {
-        return UIImage(data: image)!
+        if (image != nil) {
+            return UIImage(data: image!)!
+        } else {
+            return UIImage(named: "icn_noimage")!
+        }
     }
 }

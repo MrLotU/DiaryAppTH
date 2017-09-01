@@ -11,7 +11,6 @@
 		083B882F1F52E54400E74BEC /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083B882E1F52E54400E74BEC /* Entry.swift */; };
 		083B88321F52E77A00E74BEC /* CDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083B88311F52E77A00E74BEC /* CDController.swift */; };
 		084AC17B1F52CDC400E057AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AC17A1F52CDC400E057AB /* AppDelegate.swift */; };
-		084AC17D1F52CDC400E057AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AC17C1F52CDC400E057AB /* ViewController.swift */; };
 		084AC1801F52CDC400E057AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 084AC17E1F52CDC400E057AB /* Main.storyboard */; };
 		084AC1831F52CDC400E057AB /* Today.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 084AC1811F52CDC400E057AB /* Today.xcdatamodeld */; };
 		084AC1851F52CDC400E057AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 084AC1841F52CDC400E057AB /* Assets.xcassets */; };
@@ -35,7 +34,6 @@
 		083B88311F52E77A00E74BEC /* CDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDController.swift; sourceTree = "<group>"; };
 		084AC1771F52CDC400E057AB /* Today.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Today.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		084AC17A1F52CDC400E057AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		084AC17C1F52CDC400E057AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		084AC17F1F52CDC400E057AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		084AC1821F52CDC400E057AB /* Today.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Today.xcdatamodel; sourceTree = "<group>"; };
 		084AC1841F52CDC400E057AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				083B88301F52E76700E74BEC /* Controller */,
 				084AC19D1F52DA3D00E057AB /* Model */,
 				084AC17A1F52CDC400E057AB /* AppDelegate.swift */,
-				084AC17C1F52CDC400E057AB /* ViewController.swift */,
 				084AC17E1F52CDC400E057AB /* Main.storyboard */,
 				084AC1841F52CDC400E057AB /* Assets.xcassets */,
 				084AC1861F52CDC400E057AB /* LaunchScreen.storyboard */,
@@ -232,7 +229,6 @@
 				083B88321F52E77A00E74BEC /* CDController.swift in Sources */,
 				083B882F1F52E54400E74BEC /* Entry.swift in Sources */,
 				084AC1831F52CDC400E057AB /* Today.xcdatamodeld in Sources */,
-				084AC17D1F52CDC400E057AB /* ViewController.swift in Sources */,
 				083B882D1F52E38500E74BEC /* Location.swift in Sources */,
 				084AC17B1F52CDC400E057AB /* AppDelegate.swift in Sources */,
 			);
