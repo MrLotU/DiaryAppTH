@@ -15,6 +15,18 @@ class EntriesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let entry = Entry.entryWith(content: "Woah, I did a thing!")
+        entry.addImage(UIImage(named: "icn_noimage")!)
+//        entry.addLocation(CLLocation(latitude: 52.428842, longitude:  6.230866))
+        entry.setState(.happy)
+        entries.append(entry)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE, MMM d, yyyy"
+        
+        self.title = dateFormatter.string(from: Date())
+        
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -42,7 +54,11 @@ class EntriesTableViewController: UITableViewController {
 
         let totalHeight = marginHeights + titleHeight + contentHeight + locationHeight
         
-        return totalHeight
+        if totalHeight < 88 {
+            return 88.0
+        } else {
+            return totalHeight
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,10 +66,23 @@ class EntriesTableViewController: UITableViewController {
         let entry = entries[indexPath.row]
         
         cell.title = entry.title
-        cell.content = entry.title
+        cell.content = entry.content
         cell.stateImage = entry.stateImage
         cell.thumbnailImage = entry.photoImage
-        cell.location = CLLocation(latitude: 100, longitude: 100)
+        
+        if let loc = entry.location {
+            let location = loc.location
+            let geoCoder = CLGeocoder()
+            geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                guard let placemarks = placemarks else { return }
+        
+                let placemark = placemarks[0]
+        
+                guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
+                        
+                cell.location = "\(name), \(city), \(area)"
+            }
+        }
         
         return cell
     }

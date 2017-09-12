@@ -13,10 +13,10 @@ import CoreLocation
 class Location: NSManagedObject {
     static let entityName = "\(Location.self)"
     
-    class func locationWith(_ lat: Double, longtitude long: Double) -> Location {
+    class func locationWith(_ lat: Double, andLong long: Double) -> Location {
         let location = NSEntityDescription.insertNewObject(forEntityName: Location.entityName, into: CoreDataController.sharedInstance.managedObjectContext) as! Location
         
-        location.longtitude = long
+        location.longtitude = long 
         location.latitude = lat
         
         return location

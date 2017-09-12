@@ -45,9 +45,9 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
     
-    var location: CLLocation? {
+    var location: String? {
         didSet{
-            locationlabel.text = "\(location.debugDescription)"
+            locationlabel.text = location
             locationImageView.image = UIImage(named: "icn_geolocate")
         }
     }

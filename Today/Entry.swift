@@ -20,36 +20,59 @@ class Entry: NSManagedObject {
         return request
     }()
     
-    class func entryWith(_ content: String) -> Entry {
+    class func entryWith(content: String) -> Entry {
         let entry = NSEntityDescription.insertNewObject(forEntityName: Entry.entityName, into: CoreDataController.sharedInstance.managedObjectContext) as! Entry
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE, MMM d, yyyy"
+        
         entry.content = content
-        entry.date = Date().timeIntervalSince1970
+        entry.date = Date()
+        entry.title = dateFormatter.string(from: entry.date)
         
         return entry
     }
     
-    class func entryWith(_ content: String, image: UIImage) -> Entry {
-        let entry = entryWith(content)
-        
-        entry.image = UIImageJPEGRepresentation(image, 1.0)!
-        
-        return entry
+    func addImage(_ image: UIImage) {
+        self.image = UIImageJPEGRepresentation(image, 1.0)
     }
     
-    class func entryWith(_ content: String, location: CLLocation) -> Entry {
-        let entry = entryWith(content)
-        
-        entry.location = Location.locationWith(location.coordinate.latitude, longtitude: location.coordinate.longitude)
-        
-        return entry
+//    class func entryWith(_ content: String, image: UIImage) -> Entry {
+//        let entry = entryWith(content)
+//        
+//        entry.image = UIImageJPEGRepresentation(image, 1.0)!
+//        
+//        return entry
+//    }
+    
+    func addLocation(_ location: CLLocation) {
+        self.location = Location.locationWith(location.coordinate.latitude, andLong: location.coordinate.longitude)
     }
     
-    class func entryWith(_ content: String, location: CLLocation, image: UIImage) -> Entry {
-        let entry = entryWith(content, image: image)
-        entry.location = Location.locationWith(location.coordinate.latitude, longtitude: location.coordinate.longitude)
-        return entry
+//    class func entryWith(_ content: String, location: CLLocation) -> Entry {
+//        let entry = entryWith(content)
+//        
+//        entry.location = Location.locationWith(location.coordinate.latitude, andLong: location.coordinate.longitude)
+//        
+//        return entry
+//    }
+    
+//    class func entryWith(_ content: String, location: CLLocation, image: UIImage) -> Entry {
+//        let entry = entryWith(content, image: image)
+//        entry.location = Location.locationWith(location.coordinate.latitude, andLong: location.coordinate.longitude)
+//        return entry
+//    }
+    
+//    class func entryWith(_ content: String, location: CLLocation, image: UIImage, state: EntryState) -> Entry {
+//        let entry = entryWith(content, location: location, image: image)
+//        entry.stateValue = state
+//        return entry
+//    }
+    
+    func setState(_ state: EntryState) {
+        self.state = state.rawValue
     }
+    
 }
 
 // MARK: - Variables and CoreData
@@ -63,25 +86,33 @@ extension Entry {
     }
     
     @NSManaged var content: String
-    @NSManaged var date: TimeInterval
+    @NSManaged var date: Date
     @NSManaged var image: Data?
     @NSManaged var location: Location?
     @NSManaged var title: String
     @NSManaged var state: String
     
-    var locationString: String {
-        guard let location = self.location else {
-            return ""
-        }
-        let cLocation = CLLocation(latitude: location.latitude, longitude: location.longtitude)
-        let placemark = CLPlacemark(location: cLocation)
-        
-        return ""
-    }
+    
+//    func getLocationString() {
+//        guard let loc = self.location else {
+//            return
+//        }
+//        let location = loc.location
+//        let geoCoder = CLGeocoder()
+//        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+//            guard let placemarks = placemarks else { return }
+//            
+//            let placemark = placemarks[0]
+//            
+//            guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
+//            
+//            let locationString = "\(name), \(city), \(area)"
+//        }
+//    }
     
     var stateValue: EntryState {
         get { return EntryState(rawValue: self.state) ?? .none }
-        set { self.state = stateValue.rawValue }
+//        set { self.state = stateValue.rawValue }
     }
     
     var stateImage: UIImage? {
