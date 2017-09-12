@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CoreLocation
 
 class Location: NSManagedObject {
     static let entityName = "\(Location.self)"
@@ -25,4 +26,8 @@ class Location: NSManagedObject {
 extension Location {
     @NSManaged var latitude: Double
     @NSManaged var longtitude: Double
+    
+    var location: CLLocation {
+        return CLLocation(latitude: latitude, longitude: longtitude)
+    }
 }

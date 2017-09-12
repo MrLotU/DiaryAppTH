@@ -52,11 +52,46 @@ class Entry: NSManagedObject {
     }
 }
 
+// MARK: - Variables and CoreData
 extension Entry {
+    
+    enum EntryState: String {
+        case happy = "Happy"
+        case bad = "Bad"
+        case average = "Average"
+        case none = "none"
+    }
+    
     @NSManaged var content: String
     @NSManaged var date: TimeInterval
     @NSManaged var image: Data?
     @NSManaged var location: Location?
+    @NSManaged var title: String
+    @NSManaged var state: String
+    
+    var locationString: String {
+        guard let location = self.location else {
+            return ""
+        }
+        let cLocation = CLLocation(latitude: location.latitude, longitude: location.longtitude)
+        let placemark = CLPlacemark(location: cLocation)
+        
+        return ""
+    }
+    
+    var stateValue: EntryState {
+        get { return EntryState(rawValue: self.state) ?? .none }
+        set { self.state = stateValue.rawValue }
+    }
+    
+    var stateImage: UIImage? {
+        switch self.stateValue {
+        case .happy: return UIImage(named: "icn_happy")
+        case .bad: return UIImage(named: "icn_bad")
+        case .average: return UIImage(named: "icn_average")
+        default: return nil
+        }
+    }
     
     var photoImage: UIImage {
         if (image != nil) {
