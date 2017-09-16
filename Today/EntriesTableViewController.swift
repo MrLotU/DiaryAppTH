@@ -87,7 +87,7 @@ class EntriesTableViewController: UITableViewController {
         return cell
     }
     
-    // MARK: Helper methods
+    // MARK: - Helper methods
     
     func heightForString(_ string:String, withWidth width: CGFloat, andFontSize size: CGFloat) -> CGFloat {
         let attributes: [String : Any] = [NSFontAttributeName : UIFont.systemFont(ofSize: size)]

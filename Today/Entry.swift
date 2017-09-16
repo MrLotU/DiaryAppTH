@@ -63,11 +63,19 @@ class Entry: NSManagedObject {
 //        return entry
 //    }
     
-//    class func entryWith(_ content: String, location: CLLocation, image: UIImage, state: EntryState) -> Entry {
-//        let entry = entryWith(content, location: location, image: image)
-//        entry.stateValue = state
-//        return entry
-//    }
+    class func entryWith(_ content: String, location: CLLocation?, image: UIImage?, state: EntryState?) -> Entry {
+        let entry = entryWith(content: content)
+        if let loc = location {
+            entry.addLocation(loc)
+        }
+        if let image = image {
+            entry.addImage(image)
+        }
+        if let state = state {
+            entry.setState(state)
+        }
+        return entry
+    }
     
     func setState(_ state: EntryState) {
         self.state = state.rawValue
