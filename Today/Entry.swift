@@ -33,36 +33,6 @@ class Entry: NSManagedObject {
         return entry
     }
     
-    func addImage(_ image: UIImage) {
-        self.image = UIImageJPEGRepresentation(image, 1.0)
-    }
-    
-//    class func entryWith(_ content: String, image: UIImage) -> Entry {
-//        let entry = entryWith(content)
-//        
-//        entry.image = UIImageJPEGRepresentation(image, 1.0)!
-//        
-//        return entry
-//    }
-    
-    func addLocation(_ location: CLLocation) {
-        self.location = Location.locationWith(location.coordinate.latitude, andLong: location.coordinate.longitude)
-    }
-    
-//    class func entryWith(_ content: String, location: CLLocation) -> Entry {
-//        let entry = entryWith(content)
-//        
-//        entry.location = Location.locationWith(location.coordinate.latitude, andLong: location.coordinate.longitude)
-//        
-//        return entry
-//    }
-    
-//    class func entryWith(_ content: String, location: CLLocation, image: UIImage) -> Entry {
-//        let entry = entryWith(content, image: image)
-//        entry.location = Location.locationWith(location.coordinate.latitude, andLong: location.coordinate.longitude)
-//        return entry
-//    }
-    
     class func entryWith(_ content: String, location: CLLocation?, image: UIImage?, state: EntryState?) -> Entry {
         let entry = entryWith(content: content)
         if let loc = location {
@@ -76,16 +46,12 @@ class Entry: NSManagedObject {
         }
         return entry
     }
-    
-    func setState(_ state: EntryState) {
-        self.state = state.rawValue
-    }
-    
 }
 
 // MARK: - Variables and CoreData
 extension Entry {
     
+    // MARK: Entry state enum
     enum EntryState: String {
         case happy = "Happy"
         case bad = "Bad"
@@ -93,34 +59,31 @@ extension Entry {
         case none = "none"
     }
     
+    // MARK: Managed vars
     @NSManaged var content: String
     @NSManaged var date: Date
     @NSManaged var image: Data?
     @NSManaged var location: Location?
     @NSManaged var title: String
     @NSManaged var state: String
+
+    // MARK: Functions
+    func setState(_ state: EntryState) {
+        self.state = state.rawValue
+    }
     
+    func addLocation(_ location: CLLocation) {
+        self.location = Location.locationWith(location.coordinate.latitude, andLong: location.coordinate.longitude)
+    }
     
-//    func getLocationString() {
-//        guard let loc = self.location else {
-//            return
-//        }
-//        let location = loc.location
-//        let geoCoder = CLGeocoder()
-//        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-//            guard let placemarks = placemarks else { return }
-//            
-//            let placemark = placemarks[0]
-//            
-//            guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
-//            
-//            let locationString = "\(name), \(city), \(area)"
-//        }
-//    }
+    func addImage(_ image: UIImage) {
+        self.image = UIImageJPEGRepresentation(image, 1.0)
+    }
     
+    //MARK: Helper vars
     var stateValue: EntryState {
         get { return EntryState(rawValue: self.state) ?? .none }
-//        set { self.state = stateValue.rawValue }
+        set { self.state = stateValue.rawValue }
     }
     
     var stateImage: UIImage? {

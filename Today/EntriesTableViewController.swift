@@ -15,16 +15,16 @@ class EntriesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let entry = Entry.entryWith(content: "Woah, I did a thing!")
-        entry.addImage(UIImage(named: "icn_noimage")!)
-//        entry.addLocation(CLLocation(latitude: 52.428842, longitude:  6.230866))
-        entry.setState(.happy)
+        
+        let entry = Entry.entryWith(content: "Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.")
         entries.append(entry)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE, MMM d, yyyy"
         
         self.title = dateFormatter.string(from: Date())
+        
+        
         
         self.tableView.reloadData()
     }
@@ -97,5 +97,20 @@ class EntriesTableViewController: UITableViewController {
         let rect: CGRect = attributedString.boundingRect(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
         
         return rect.height
+    }
+}
+
+extension EntriesTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
+        
+        cell.isHidden = true
+        
+        cell.stateImageView.isHidden = true
+        cell.titleLabel.isHidden = true
+        cell.thumbnailImageView.isHidden = true
+        cell.contentLabel.isHidden = true
+        cell.locationImageView.isHidden = true
+        cell.locationlabel.isHidden = true
     }
 }
