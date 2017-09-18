@@ -62,8 +62,31 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="soS-q3-eyH">
                                             <rect key="frame" x="43" y="55" width="25" height="25"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJO-2k-gYu" userLabel="Add_img_button">
+                                            <rect key="frame" x="36" y="83" width="96" height="96"/>
+                                            <state key="normal" image="icn_add_image"/>
+                                            <connections>
+                                                <action selector="buttonPressed:" destination="NMR-ka-9n5" eventType="touchUpInside" id="nzB-1m-4nC"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXt-64-Qbu">
+                                            <rect key="frame" x="243" y="83" width="96" height="96"/>
+                                            <state key="normal" image="icn_post_delete"/>
+                                            <connections>
+                                                <action selector="buttonPressed:" destination="NMR-ka-9n5" eventType="touchUpInside" id="rYj-Ra-ngz"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdW-mT-j9k">
+                                            <rect key="frame" x="139.5" y="83" width="96" height="96"/>
+                                            <state key="normal" image="icn_post_edit"/>
+                                            <connections>
+                                                <action selector="buttonPressed:" destination="NMR-ka-9n5" eventType="touchUpInside" id="hBV-Ks-X4t"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="DJO-2k-gYu" firstAttribute="centerY" secondItem="w1a-cy-PbD" secondAttribute="centerY" id="0pF-dq-ao0"/>
+                                        <constraint firstItem="QdW-mT-j9k" firstAttribute="leading" secondItem="DJO-2k-gYu" secondAttribute="trailing" constant="7.5" id="9Eb-Nq-Did"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="S7y-li-Aib" secondAttribute="trailing" id="Aau-PK-VUI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="M2h-LQ-csn" secondAttribute="trailing" id="Bjd-eS-Ih8"/>
                                         <constraint firstItem="N0E-oU-yis" firstAttribute="leading" secondItem="M2h-LQ-csn" secondAttribute="leading" id="Hn7-48-Q41"/>
@@ -71,11 +94,15 @@
                                         <constraint firstItem="00j-8b-4lR" firstAttribute="leading" secondItem="M2h-LQ-csn" secondAttribute="leading" id="KCX-gn-xE7"/>
                                         <constraint firstItem="dnU-A0-JYY" firstAttribute="leading" secondItem="w1a-cy-PbD" secondAttribute="leadingMargin" id="Kk5-wh-83d"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="00j-8b-4lR" secondAttribute="trailing" id="WFG-sZ-YfD"/>
+                                        <constraint firstItem="QdW-mT-j9k" firstAttribute="centerY" secondItem="w1a-cy-PbD" secondAttribute="centerY" id="Wdo-gV-1bB"/>
                                         <constraint firstItem="soS-q3-eyH" firstAttribute="top" secondItem="w1a-cy-PbD" secondAttribute="topMargin" constant="47" id="WvN-eU-oDF"/>
                                         <constraint firstItem="soS-q3-eyH" firstAttribute="trailing" secondItem="dnU-A0-JYY" secondAttribute="trailing" id="ZBV-Pb-GoP"/>
+                                        <constraint firstItem="QdW-mT-j9k" firstAttribute="centerX" secondItem="w1a-cy-PbD" secondAttribute="centerX" id="dEE-sk-uDh"/>
                                         <constraint firstItem="S7y-li-Aib" firstAttribute="top" secondItem="00j-8b-4lR" secondAttribute="bottom" constant="10" id="eyH-hc-ucr"/>
+                                        <constraint firstItem="rXt-64-Qbu" firstAttribute="centerY" secondItem="w1a-cy-PbD" secondAttribute="centerY" id="fkp-sD-Ppq"/>
                                         <constraint firstItem="dnU-A0-JYY" firstAttribute="top" secondItem="w1a-cy-PbD" secondAttribute="topMargin" id="hNa-eF-GRb"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="S7y-li-Aib" secondAttribute="bottom" constant="2.5" id="i3w-ki-AxV"/>
+                                        <constraint firstItem="rXt-64-Qbu" firstAttribute="leading" secondItem="QdW-mT-j9k" secondAttribute="trailing" constant="7.5" id="leT-DV-DBB"/>
                                         <constraint firstItem="soS-q3-eyH" firstAttribute="leading" secondItem="w1a-cy-PbD" secondAttribute="leadingMargin" constant="35" id="qtK-zs-e35"/>
                                         <constraint firstItem="M2h-LQ-csn" firstAttribute="leading" secondItem="dnU-A0-JYY" secondAttribute="trailing" constant="16" id="qvk-A3-60s"/>
                                         <constraint firstItem="S7y-li-Aib" firstAttribute="leading" secondItem="N0E-oU-yis" secondAttribute="trailing" constant="8" id="rEB-fn-EZj"/>
@@ -85,7 +112,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addImageButton" destination="DJO-2k-gYu" id="fI1-CY-RQR"/>
                                     <outlet property="contentLabel" destination="00j-8b-4lR" id="L4V-66-kK4"/>
+                                    <outlet property="deletePostButton" destination="rXt-64-Qbu" id="3RO-5A-iHC"/>
+                                    <outlet property="editPostButton" destination="QdW-mT-j9k" id="Yug-YJ-MHg"/>
                                     <outlet property="locationImageView" destination="N0E-oU-yis" id="sHJ-6j-28O"/>
                                     <outlet property="locationlabel" destination="S7y-li-Aib" id="v5B-B5-5TK"/>
                                     <outlet property="stateImageView" destination="soS-q3-eyH" id="CTY-kK-CF6"/>
@@ -108,10 +138,41 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="C2u-yj-yE4" kind="show" identifier="createNewPost" id="3Jj-qa-4C1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZsM-4x-b4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="935.20000000000005" y="12.143928035982009"/>
+        </scene>
+        <!--New Post Table View Controller-->
+        <scene sceneID="fa2-OX-dUU">
+            <objects>
+                <tableViewController id="C2u-yj-yE4" customClass="NewPostTableViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iaS-kK-Slc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="B0F-i9-Fmp">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B0F-i9-Fmp" id="mNF-pM-kKX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="C2u-yj-yE4" id="GT1-YW-Mki"/>
+                            <outlet property="delegate" destination="C2u-yj-yE4" id="5m9-wK-ye0"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YRG-AO-ywq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1646" y="12"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kKV-HK-AqP">
@@ -134,6 +195,9 @@
     </scenes>
     <resources>
         <image name="Icn_write" width="61" height="43"/>
+        <image name="icn_add_image" width="96" height="96"/>
         <image name="icn_noimage" width="47" height="47"/>
+        <image name="icn_post_delete" width="96" height="96"/>
+        <image name="icn_post_edit" width="96" height="96"/>
     </resources>
 </document>

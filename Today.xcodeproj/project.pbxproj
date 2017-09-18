@@ -18,6 +18,7 @@
 		084AC1851F52CDC400E057AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 084AC1841F52CDC400E057AB /* Assets.xcassets */; };
 		084AC1881F52CDC400E057AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 084AC1861F52CDC400E057AB /* LaunchScreen.storyboard */; };
 		084AC1931F52CDC400E057AB /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AC1921F52CDC400E057AB /* TodayTests.swift */; };
+		0852C54D1F6FEAD70019A9FA /* NewPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852C54C1F6FEAD70019A9FA /* NewPostTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		084AC18E1F52CDC400E057AB /* TodayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		084AC1921F52CDC400E057AB /* TodayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTests.swift; sourceTree = "<group>"; };
 		084AC1941F52CDC400E057AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0852C54C1F6FEAD70019A9FA /* NewPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			children = (
 				083B88311F52E77A00E74BEC /* CDController.swift */,
 				083FAC4C1F595E010029B465 /* EntriesTableViewController.swift */,
+				0852C54C1F6FEAD70019A9FA /* NewPostTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				083B88321F52E77A00E74BEC /* CDController.swift in Sources */,
 				083B882F1F52E54400E74BEC /* Entry.swift in Sources */,
 				083FAC501F595F4B0029B465 /* EntryTableViewCell.swift in Sources */,
+				0852C54D1F6FEAD70019A9FA /* NewPostTableViewController.swift in Sources */,
 				084AC1831F52CDC400E057AB /* Today.xcdatamodeld in Sources */,
 				083B882D1F52E38500E74BEC /* Location.swift in Sources */,
 				084AC17B1F52CDC400E057AB /* AppDelegate.swift in Sources */,

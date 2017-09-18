@@ -16,8 +16,10 @@ class EntriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let entry = Entry.entryWith(content: "Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.")
-        entries.append(entry)
+        for _ in 1...10 {
+            let entry = Entry.entryWith(content: "Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.")
+            entries.append(entry)
+        }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE, MMM d, yyyy"
@@ -40,30 +42,12 @@ class EntriesTableViewController: UITableViewController {
         //TODO: Actually make this work with sorting entries into months
         return entries.count
     }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let entry = entries[indexPath.row]
-        
-        let marginHeights: CGFloat = 37.0
-        let titleHeight = heightForString(entry.title, withWidth: 283.0, andFontSize: 18.0)
-        let contentHeight = heightForString(entry.content, withWidth: 283.0, andFontSize: 17.0)
-        var locationHeight: CGFloat = 0
-        if entry.location != nil {
-            locationHeight = heightForString("\(entry.location!.location)", withWidth: 250.0, andFontSize: 17.0)
-        }
-
-        let totalHeight = marginHeights + titleHeight + contentHeight + locationHeight
-        
-        if totalHeight < 88 {
-            return 88.0
-        } else {
-            return totalHeight
-        }
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
         let entry = entries[indexPath.row]
+        
+        cell.isSelected = false
         
         cell.title = entry.title
         cell.content = entry.content
@@ -87,7 +71,36 @@ class EntriesTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let entry = entries[indexPath.row]
+        
+        let marginHeights: CGFloat = 37.0
+        let titleHeight = heightForString(entry.title, withWidth: 283.0, andFontSize: 18.0)
+        let contentHeight = heightForString(entry.content, withWidth: 283.0, andFontSize: 17.0)
+        var locationHeight: CGFloat = 0
+        if entry.location != nil {
+            locationHeight = heightForString("\(entry.location!.location)", withWidth: 250.0, andFontSize: 17.0)
+        }
+        
+        let totalHeight = marginHeights + titleHeight + contentHeight + locationHeight
+        
+        if totalHeight < 140.0 {
+            return 140.0
+        } else {
+            return totalHeight
+        }
+    }
+        
     // MARK: - Helper methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createNewPost" {
+            let destVC = segue.destination as! NewPostTableViewController
+            destVC.entries = self.entries
+        }
+    }
     
     func heightForString(_ string:String, withWidth width: CGFloat, andFontSize size: CGFloat) -> CGFloat {
         let attributes: [String : Any] = [NSFontAttributeName : UIFont.systemFont(ofSize: size)]
@@ -97,20 +110,5 @@ class EntriesTableViewController: UITableViewController {
         let rect: CGRect = attributedString.boundingRect(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
         
         return rect.height
-    }
-}
-
-extension EntriesTableViewController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
-        
-        cell.isHidden = true
-        
-        cell.stateImageView.isHidden = true
-        cell.titleLabel.isHidden = true
-        cell.thumbnailImageView.isHidden = true
-        cell.contentLabel.isHidden = true
-        cell.locationImageView.isHidden = true
-        cell.locationlabel.isHidden = true
     }
 }

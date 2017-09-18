@@ -19,8 +19,9 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var locationlabel: UILabel!
     @IBOutlet weak var locationImageView: UIImageView!
-    
-    var editingMode: Bool = false
+    @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var editPostButton: UIButton!
+    @IBOutlet weak var deletePostButton: UIButton!
     
     // MARK: DidSet Variables
     var stateImage: UIImage? {
@@ -50,19 +51,35 @@ class EntryTableViewCell: UITableViewCell {
     var location: String? {
         didSet{
             locationlabel.text = location
-            locationImageView.image = UIImage(named: "icn_geolocate")
+            if location != nil && location != "" {
+                locationImageView.image = UIImage(named: "icn_geolocate")
+            }
         }
     }
     
-    func setViewEditingMode(_ editingMode: Bool) {
-        self.editingMode = editingMode
-        if editingMode == true {
+    // MARK: Functions
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        switch sender {
+        case addImageButton: print("Pressed the add image button! Woah!")
+        case editPostButton: print("Pressed the edit post button! Woah!")
+        case deletePostButton: print("Pressed the delete post button! Woah!")
+        default: print("How even did you get here? This shouldn't be possible")
+        }
+    }
+    
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        if selected {
             self.stateImageView.isHidden = true
             self.titleLabel.isHidden = true
             self.thumbnailImageView.isHidden = true
             self.contentLabel.isHidden = true
             self.locationImageView.isHidden = true
             self.locationlabel.isHidden = true
+            self.addImageButton.isHidden = false
+            self.editPostButton.isHidden = false
+            self.deletePostButton.isHidden = false
             self.backgroundColor = UIColor(colorLiteralRed: 74/255, green: 74/255, blue: 74/255, alpha: 1.0)
         } else {
             self.stateImageView.isHidden = false
@@ -71,6 +88,21 @@ class EntryTableViewCell: UITableViewCell {
             self.contentLabel.isHidden = false
             self.locationImageView.isHidden = false
             self.locationlabel.isHidden = false
+            
+            self.addImageButton.isHidden = true
+            self.editPostButton.isHidden = true
+            self.deletePostButton.isHidden = true
+
+            
+            self.stateImageView.image = self.stateImage
+            self.titleLabel.text = title
+            self.thumbnailImageView.image = thumbnailImage
+            self.contentLabel.text = content
+            self.locationlabel.text = location
+            if location != nil && location != "" {
+                locationImageView.image = UIImage(named: "icn_geolocate")
+            }
+            
             self.backgroundColor = UIColor.white
         }
     }
