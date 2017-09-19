@@ -69,21 +69,20 @@ extension EntryDataSource: UITableViewDelegate {
 extension EntryDataSource: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         //TODO: Actually make this work with sorting entries into months
-        print("test 2")
+        print("numberOfSections: \(fetchedResultsController.sections?.count ?? 0)")
         return fetchedResultsController.sections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //TODO: Actually make this work with sorting entries into months
         guard let section = fetchedResultsController.sections?[section] else { return 0 }
-        print("test")
+        print("numberOfRowsInSection: \(section.numberOfObjects)")
         return section.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
         let entry = fetchedResultsController.object(at: indexPath) as! Entry
-        
         cell.isSelected = false
         
         cell.title = entry.title
