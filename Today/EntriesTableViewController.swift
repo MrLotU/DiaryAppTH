@@ -12,63 +12,26 @@ import CoreLocation
 class EntriesTableViewController: UITableViewController {
     
     var entries: [Entry] = []
+    
+    lazy var dataSource: EntryDataSource = {
+        return EntryDataSource(fetchRequest: Entry.allEntriesRequest, tableView: self.tableView)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.dataSource = dataSource
+        self.tableView.delegate = dataSource
+        
         for _ in 1...10 {
             let entry = Entry.entryWith(content: "Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.")
-            entries.append(entry)
+//            entries.append(entry)
         }
-        
+    
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE, MMM d, yyyy"
         
         self.title = dateFormatter.string(from: Date())
-        
-        
-        
-        self.tableView.reloadData()
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        //TODO: Actually make this work with sorting entries into months
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: Actually make this work with sorting entries into months
-        return entries.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
-        let entry = entries[indexPath.row]
-        
-        cell.isSelected = false
-        
-        cell.title = entry.title
-        cell.content = entry.content
-        cell.stateImage = entry.stateImage
-        cell.thumbnailImage = entry.photoImage
-        
-        if let loc = entry.location {
-            let location = loc.location
-            let geoCoder = CLGeocoder()
-            geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-                guard let placemarks = placemarks else { return }
-        
-                let placemark = placemarks[0]
-        
-                guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
-                        
-                cell.location = "\(name), \(city), \(area)"
-            }
-        }
-        
-        return cell
     }
     
     // MARK: - Table view delegate

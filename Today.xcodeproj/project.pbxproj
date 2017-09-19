@@ -19,6 +19,8 @@
 		084AC1881F52CDC400E057AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 084AC1861F52CDC400E057AB /* LaunchScreen.storyboard */; };
 		084AC1931F52CDC400E057AB /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AC1921F52CDC400E057AB /* TodayTests.swift */; };
 		0852C54D1F6FEAD70019A9FA /* NewPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852C54C1F6FEAD70019A9FA /* NewPostTableViewController.swift */; };
+		08AF12CB1F7149AC00FCB4AB /* EntryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF12CA1F7149AC00FCB4AB /* EntryDataSource.swift */; };
+		08AF12CD1F714A7B00FCB4AB /* EntryFetchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF12CC1F714A7B00FCB4AB /* EntryFetchResultController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		084AC1921F52CDC400E057AB /* TodayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTests.swift; sourceTree = "<group>"; };
 		084AC1941F52CDC400E057AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0852C54C1F6FEAD70019A9FA /* NewPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostTableViewController.swift; sourceTree = "<group>"; };
+		08AF12CA1F7149AC00FCB4AB /* EntryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDataSource.swift; sourceTree = "<group>"; };
+		08AF12CC1F714A7B00FCB4AB /* EntryFetchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryFetchResultController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 				083B88311F52E77A00E74BEC /* CDController.swift */,
 				083FAC4C1F595E010029B465 /* EntriesTableViewController.swift */,
 				0852C54C1F6FEAD70019A9FA /* NewPostTableViewController.swift */,
+				08AF12CC1F714A7B00FCB4AB /* EntryFetchResultController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 				084AC1811F52CDC400E057AB /* Today.xcdatamodeld */,
 				083B882C1F52E38500E74BEC /* Location.swift */,
 				083B882E1F52E54400E74BEC /* Entry.swift */,
+				08AF12CA1F7149AC00FCB4AB /* EntryDataSource.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -255,9 +261,11 @@
 				083B88321F52E77A00E74BEC /* CDController.swift in Sources */,
 				083B882F1F52E54400E74BEC /* Entry.swift in Sources */,
 				083FAC501F595F4B0029B465 /* EntryTableViewCell.swift in Sources */,
+				08AF12CD1F714A7B00FCB4AB /* EntryFetchResultController.swift in Sources */,
 				0852C54D1F6FEAD70019A9FA /* NewPostTableViewController.swift in Sources */,
 				084AC1831F52CDC400E057AB /* Today.xcdatamodeld in Sources */,
 				083B882D1F52E38500E74BEC /* Location.swift in Sources */,
+				08AF12CB1F7149AC00FCB4AB /* EntryDataSource.swift in Sources */,
 				084AC17B1F52CDC400E057AB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
