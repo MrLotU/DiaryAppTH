@@ -80,7 +80,7 @@ class EntryTableViewCell: UITableViewCell {
             self.addImageButton.isHidden = false
             self.editPostButton.isHidden = false
             self.deletePostButton.isHidden = false
-            self.backgroundColor = UIColor(colorLiteralRed: 74/255, green: 74/255, blue: 74/255, alpha: 1.0)
+            self.backgroundColor = UIColor(red: 74/255, green: 74/255, blue: 74/255, alpha: 1.0)
         } else {
             self.stateImageView.isHidden = false
             self.titleLabel.isHidden = false
