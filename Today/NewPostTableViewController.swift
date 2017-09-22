@@ -10,8 +10,6 @@ import UIKit
 
 class NewPostTableViewController: UITableViewController {
     
-    var entries: [Entry] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,15 +24,20 @@ class NewPostTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 2
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newEntryCell", for: indexPath)
         return cell
+//        switch (indexPath.section, indexPath.row) {
+//        case (0, 0):
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "newEntryCell", for: indexPath)
+//            return cell
+//        default:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
+//            return cell
+//        }
     }
 }

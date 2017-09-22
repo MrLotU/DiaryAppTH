@@ -11,8 +11,6 @@ import CoreLocation
 
 class EntriesTableViewController: UITableViewController {
     
-    var entries: [Entry] = []
-    
     lazy var dataSource: EntryDataSource = {
         return EntryDataSource(fetchRequest: Entry.allEntriesRequest, tableView: self.tableView)
     }()
@@ -23,9 +21,13 @@ class EntriesTableViewController: UITableViewController {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
         
-//        for _ in 1...10 {
-//            Entry.entryWith(content: "Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.")
-//        }
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "icn_write"), style: .plain, target: self, action: #selector(newPostButtonPressed))
+        
+        self.navigationItem.setRightBarButton(barButtonItem, animated: false)
+        
+        for _ in 1...10 {
+            _ = Entry.entryWith(content: "Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.")
+        }
     
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE, MMM d, yyyy"
@@ -35,10 +37,7 @@ class EntriesTableViewController: UITableViewController {
 
     // MARK: - Helper methods
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createNewPost" {
-            let destVC = segue.destination as! NewPostTableViewController
-            destVC.entries = self.entries
-        }
+    func newPostButtonPressed() {
+        performSegue(withIdentifier: "createNewPost", sender: nil)
     }
 }
