@@ -164,7 +164,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="newEntryCell" rowHeight="264" id="liN-h5-WB9" customClass="EntryTableViewCell" customModule="Today" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="newEntryCell" rowHeight="264" id="liN-h5-WB9" customClass="NewEntryTableViewCell" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="264"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="liN-h5-WB9" id="sJP-pV-Qjp">
@@ -205,7 +205,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="entryCell" rowHeight="264" id="Mwx-6q-Ejk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="entryCell" rowHeight="264" id="Mwx-6q-Ejk" customClass="EntryTableViewCell" customModule="Today" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="292" width="375" height="264"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mwx-6q-Ejk" id="7SM-uD-uju">
@@ -287,6 +287,17 @@
                                         <constraint firstItem="RhR-yl-yAm" firstAttribute="leading" secondItem="Akq-2c-lrA" secondAttribute="trailing" constant="8" id="snp-hr-FyF"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addImageButton" destination="zzD-MJ-CGj" id="9xb-Rc-2uc"/>
+                                    <outlet property="contentLabel" destination="vGl-Lw-oO6" id="NPW-yw-J3U"/>
+                                    <outlet property="deletePostButton" destination="nE3-j5-wwZ" id="5t9-9H-tSw"/>
+                                    <outlet property="editPostButton" destination="a5T-6l-MeW" id="FAc-F0-qw8"/>
+                                    <outlet property="locationImageView" destination="Akq-2c-lrA" id="PP5-4T-1Qd"/>
+                                    <outlet property="locationlabel" destination="RhR-yl-yAm" id="tMT-Zg-h1N"/>
+                                    <outlet property="stateImageView" destination="RJC-S2-xhY" id="VmH-v1-Jem"/>
+                                    <outlet property="thumbnailImageView" destination="Q6E-J4-hiO" id="Cee-G3-4eU"/>
+                                    <outlet property="titleLabel" destination="7fh-C6-Stq" id="Zg8-xH-hId"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
