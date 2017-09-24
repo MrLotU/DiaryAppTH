@@ -22,6 +22,7 @@
 		085DB9F21F77AF3D00BA2338 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DB9F11F77AF3D00BA2338 /* LocationManager.swift */; };
 		08AF12CB1F7149AC00FCB4AB /* EntryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF12CA1F7149AC00FCB4AB /* EntryDataSource.swift */; };
 		08AF12CD1F714A7B00FCB4AB /* EntryFetchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF12CC1F714A7B00FCB4AB /* EntryFetchResultController.swift */; };
+		08B387071F77F56B009B15B8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B387061F77F56B009B15B8 /* ImagePicker.swift */; };
 		08C0F6621F75032D006A6A5A /* NewEntryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C0F6611F75032D006A6A5A /* NewEntryDataSource.swift */; };
 		08C0F6641F75059A006A6A5A /* NewEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C0F6631F75059A006A6A5A /* NewEntryTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		085DB9F11F77AF3D00BA2338 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		08AF12CA1F7149AC00FCB4AB /* EntryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDataSource.swift; sourceTree = "<group>"; };
 		08AF12CC1F714A7B00FCB4AB /* EntryFetchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryFetchResultController.swift; sourceTree = "<group>"; };
+		08B387061F77F56B009B15B8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		08C0F6611F75032D006A6A5A /* NewEntryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryDataSource.swift; sourceTree = "<group>"; };
 		08C0F6631F75059A006A6A5A /* NewEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				084AC1861F52CDC400E057AB /* LaunchScreen.storyboard */,
 				084AC1891F52CDC400E057AB /* Info.plist */,
 				085DB9F11F77AF3D00BA2338 /* LocationManager.swift */,
+				08B387061F77F56B009B15B8 /* ImagePicker.swift */,
 			);
 			name = "Helper files";
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				083FAC4D1F595E010029B465 /* EntriesTableViewController.swift in Sources */,
 				083B88321F52E77A00E74BEC /* CDController.swift in Sources */,
 				083B882F1F52E54400E74BEC /* Entry.swift in Sources */,
+				08B387071F77F56B009B15B8 /* ImagePicker.swift in Sources */,
 				083FAC501F595F4B0029B465 /* EntryTableViewCell.swift in Sources */,
 				08AF12CD1F714A7B00FCB4AB /* EntryFetchResultController.swift in Sources */,
 				08C0F6641F75059A006A6A5A /* NewEntryTableViewCell.swift in Sources */,

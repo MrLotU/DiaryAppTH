@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MobileCoreServices
 
 class NewEntryTableViewCell: UITableViewCell {
 
@@ -21,9 +22,10 @@ class NewEntryTableViewCell: UITableViewCell {
     @IBOutlet weak var setThumbnailButton: UIButton!
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var thumnailImageView: UIImageView!
     @IBOutlet weak var stateImageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
+    
+    let imagePickerController = UIImagePickerController()
     
     var state: Entry.EntryState = .none {
         didSet {
@@ -61,14 +63,18 @@ class NewEntryTableViewCell: UITableViewCell {
             } else {
                 self.state = .bad
             }
-        case setThumbnailButton: break
         case addLocationButton:
             self.getLocation()
         default: break
         }
     }
     
-    func saveContent() {
+    func saveContent(completion: ((String) -> ())) {
+        if content == nil || content == "" {
+            completion("Entry content can't be empty!")
+            return
+        }
+        
         Entry.entryWith(self.content, location: self.location, image: self.thumnailImage, state: self.state)
     }
     
@@ -101,6 +107,10 @@ class NewEntryTableViewCell: UITableViewCell {
         
         self.entryTexView.delegate = self
         
+        setThumbnailButton.imageView?.contentMode = .scaleAspectFill
+        setThumbnailButton.layer.cornerRadius = setThumbnailButton.frame.height / 2
+        setThumbnailButton.layer.masksToBounds = true
+        
         self.numberOfCharsLabel.text = "0 / 200"
         
         let dateFormatter = DateFormatter()
@@ -113,17 +123,7 @@ class NewEntryTableViewCell: UITableViewCell {
 //MARK: - UITextViewDelegate
 
 extension NewEntryTableViewCell: UITextViewDelegate {
-    
-//    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-//        if textView.text.characters.count >= 200 {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-//
-//
-    
+
     func textViewDidChange(_ textView: UITextView) {
         let characters = textView.text.characters
         let charCount = characters.count
@@ -132,6 +132,17 @@ extension NewEntryTableViewCell: UITextViewDelegate {
         } else {
             self.content = textView.text
             self.numberOfCharsLabel.text = "\(charCount) / 200"
+        }
+    }
+}
+
+//MARK: - ImagePickerControllerDelegate
+
+extension NewEntryTableViewCell: ImagePickerDelegate {
+    func imagePicker(_ picker: ImagePicker, didFinishPickingImage image: UIImage) {
+        picker.dismissImagePickerController(animated: true) {
+            self.thumnailImage = image
+            self.setThumbnailButton.setImage(image, for: .normal)
         }
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class NewPostTableViewController: UITableViewController {
     
     lazy var dataSource: NewEntryDataSource = {
-        return NewEntryDataSource(fetchRequest: Entry.allEntriesRequest, tableView: self.tableView)
+        return NewEntryDataSource(fetchRequest: Entry.allEntriesRequest, tableView: self.tableView, controller: self)
     }()
     
     override func viewDidLoad() {
@@ -24,8 +24,22 @@ class NewPostTableViewController: UITableViewController {
     
     func doneButtonPressed() {
         let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NewEntryTableViewCell
-        cell.saveContent()
+        cell.saveContent() { message in
+            let alert = UIAlertController(title: "Something went wrong!", message: message, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            self.present(alert, animated: true)
+        }
         
         self.navigationController?.popViewController(animated: true)
     }
 }
+
+
+
+
+
+
+
+
+

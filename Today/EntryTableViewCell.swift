@@ -68,6 +68,11 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        thumbnailImageView.contentMode = .scaleAspectFill
+        thumbnailImageView.layer.cornerRadius = thumbnailImageView.frame.height / 2
+        thumbnailImageView.layer.masksToBounds = true
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {

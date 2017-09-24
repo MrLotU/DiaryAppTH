@@ -12,12 +12,14 @@ import CoreData
 import CoreLocation
 
 class NewEntryDataSource: NSObject {
+    fileprivate let tableViewController: UITableViewController
     fileprivate let tableView: UITableView
     fileprivate let managedObjectContext = CoreDataController.sharedInstance.managedObjectContext
     fileprivate let fetchedResultsController: EntryFetchResultsController
     
-    init(fetchRequest: NSFetchRequest<NSFetchRequestResult>, tableView: UITableView) {
+    init(fetchRequest: NSFetchRequest<NSFetchRequestResult>, tableView: UITableView, controller: UITableViewController) {
         self.tableView = tableView
+        self.tableViewController = controller
         
         self.fetchedResultsController = EntryFetchResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, tableView: self.tableView)
         
@@ -28,6 +30,13 @@ class NewEntryDataSource: NSObject {
         self.fetchedResultsController.performFetch(withPredicate: predicate)
         tableView.reloadData()
     }
+    
+    lazy var imagePicker: ImagePicker = {
+        let picker = ImagePicker(presentingViewController: self.tableViewController)
+        return picker
+    }()
+    
+    
 }
 
 //MARK: - UITableViewDelegate
@@ -91,6 +100,11 @@ extension NewEntryDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section, indexPath.row) == (0, 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "newEntryCell", for: indexPath) as! NewEntryTableViewCell
+            
+            cell.setThumbnailButton.addTarget(imagePicker, action: #selector(imagePicker.presentImagePickerController), for: .touchUpInside)
+            
+            imagePicker.delegate = cell
+            
             return cell
         } else {
             var index = indexPath
