@@ -21,12 +21,16 @@ class EntriesTableViewController: UITableViewController {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
         
-        let barButtonItem = UIBarButtonItem(image: UIImage(named: "icn_write"), style: .plain, target: self, action: #selector(newPostButtonPressed))
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "icn_write"), for: .normal)
+        button.addTarget(self, action: #selector(newPostButtonPressed), for: .touchUpInside)
+        
+        let barButtonItem = UIBarButtonItem(customView: button)
         
         self.navigationItem.setRightBarButton(barButtonItem, animated: false)
         
         for _ in 1...10 {
-            _ = Entry.entryWith(content: "Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.")
+            Entry.entryWith("Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.", location: nil, image: nil, state: nil)
         }
     
         let dateFormatter = DateFormatter()

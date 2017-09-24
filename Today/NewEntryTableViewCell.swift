@@ -24,7 +24,6 @@ class NewEntryTableViewCell: UITableViewCell {
     @IBOutlet weak var thumnailImageView: UIImageView!
     @IBOutlet weak var stateImageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var saveButton: UIButton!
     
     var state: Entry.EntryState = .none {
         didSet {
@@ -65,8 +64,6 @@ class NewEntryTableViewCell: UITableViewCell {
         case setThumbnailButton: break
         case addLocationButton:
             self.getLocation()
-        case saveButton:
-            self.saveContent()
         default: break
         }
     }

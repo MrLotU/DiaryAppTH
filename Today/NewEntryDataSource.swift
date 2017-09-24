@@ -76,12 +76,10 @@ extension NewEntryDataSource: UITableViewDelegate {
 
 extension NewEntryDataSource: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        //TODO: Actually make this work with sorting entries into months
         return fetchedResultsController.sections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection tvSection: Int) -> Int {
-        //TODO: Actually make this work with sorting entries into months
         guard let section = fetchedResultsController.sections?[tvSection] else { return 1 }
         if tvSection == 0 {
             return section.numberOfObjects + 1

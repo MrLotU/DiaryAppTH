@@ -33,7 +33,7 @@ class Entry: NSManagedObject {
         return entry
     }
     
-    class func entryWith(_ content: String, location: CLLocation?, image: UIImage?, state: EntryState?) -> Entry {
+    class func entryWith(_ content: String, location: CLLocation?, image: UIImage?, state: EntryState?) {
         let entry = entryWith(content: content)
         if let loc = location {
             entry.addLocation(loc)
@@ -44,7 +44,6 @@ class Entry: NSManagedObject {
         if let state = state {
             entry.setState(state)
         }
-        return entry
     }
 }
 
