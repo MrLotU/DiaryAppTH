@@ -23,6 +23,10 @@ class NewPostTableViewController: UITableViewController {
     }
     
     func doneButtonPressed() {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "newEntryCell", for: IndexPath(row: 0, section: 0)) as! NewEntryTableViewCell
+//        cell.saveContent()
         
+        self.resignFirstResponder()
+        self.navigationController?.popViewController(animated: true)
     }
 }

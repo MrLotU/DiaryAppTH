@@ -34,22 +34,30 @@ class NewEntryDataSource: NSObject {
 
 extension NewEntryDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let entry = fetchedResultsController.object(at: indexPath) as! Entry
-        
-        let marginHeights: CGFloat = 37.0
-        let titleHeight = heightForString(entry.title, withWidth: 283.0, andFontSize: 18.0)
-        let contentHeight = heightForString(entry.content, withWidth: 283.0, andFontSize: 17.0)
-        var locationHeight: CGFloat = 0
-        if entry.location != nil {
-            locationHeight = heightForString("\(entry.location!.location)", withWidth: 250.0, andFontSize: 17.0)
-        }
-        
-        let totalHeight = marginHeights + titleHeight + contentHeight + locationHeight
-        
-        if totalHeight < 140.0 {
-            return 140.0
+        if (indexPath.section, indexPath.row) == (0, 0) {
+            return 264
         } else {
-            return totalHeight
+            var index = indexPath
+            if indexPath.section == 0 {
+                index = IndexPath(row: indexPath.row - 1, section: indexPath.section)
+            }
+            let entry = fetchedResultsController.object(at: index) as! Entry
+        
+            let marginHeights: CGFloat = 37.0
+            let titleHeight = heightForString(entry.title, withWidth: 283.0, andFontSize: 18.0)
+            let contentHeight = heightForString(entry.content, withWidth: 283.0, andFontSize: 17.0)
+            var locationHeight: CGFloat = 0
+            if entry.location != nil {
+                locationHeight = heightForString("\(entry.location!.location)", withWidth: 250.0, andFontSize: 17.0)
+            }
+        
+            let totalHeight = marginHeights + titleHeight + contentHeight + locationHeight
+        
+            if totalHeight < 140.0 {
+                return 140.0
+            } else {
+                return totalHeight
+            }
         }
     }
     
@@ -84,11 +92,15 @@ extension NewEntryDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section, indexPath.row) == (0, 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "newEntryCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "newEntryCell", for: indexPath) as! NewEntryTableViewCell
             return cell
         } else {
+            var index = indexPath
+            if indexPath.section == 0 {
+                index = IndexPath(row: indexPath.row - 1, section: indexPath.section)
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
-            let entry = fetchedResultsController.object(at: indexPath) as! Entry
+            let entry = fetchedResultsController.object(at: index) as! Entry
             cell.isSelected = false
         
             cell.title = entry.title

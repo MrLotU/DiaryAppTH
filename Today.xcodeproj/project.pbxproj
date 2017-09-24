@@ -19,6 +19,7 @@
 		084AC1881F52CDC400E057AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 084AC1861F52CDC400E057AB /* LaunchScreen.storyboard */; };
 		084AC1931F52CDC400E057AB /* TodayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AC1921F52CDC400E057AB /* TodayTests.swift */; };
 		0852C54D1F6FEAD70019A9FA /* NewPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852C54C1F6FEAD70019A9FA /* NewPostTableViewController.swift */; };
+		085DB9F21F77AF3D00BA2338 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DB9F11F77AF3D00BA2338 /* LocationManager.swift */; };
 		08AF12CB1F7149AC00FCB4AB /* EntryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF12CA1F7149AC00FCB4AB /* EntryDataSource.swift */; };
 		08AF12CD1F714A7B00FCB4AB /* EntryFetchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AF12CC1F714A7B00FCB4AB /* EntryFetchResultController.swift */; };
 		08C0F6621F75032D006A6A5A /* NewEntryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C0F6611F75032D006A6A5A /* NewEntryDataSource.swift */; };
@@ -52,6 +53,7 @@
 		084AC1921F52CDC400E057AB /* TodayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTests.swift; sourceTree = "<group>"; };
 		084AC1941F52CDC400E057AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0852C54C1F6FEAD70019A9FA /* NewPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostTableViewController.swift; sourceTree = "<group>"; };
+		085DB9F11F77AF3D00BA2338 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		08AF12CA1F7149AC00FCB4AB /* EntryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDataSource.swift; sourceTree = "<group>"; };
 		08AF12CC1F714A7B00FCB4AB /* EntryFetchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryFetchResultController.swift; sourceTree = "<group>"; };
 		08C0F6611F75032D006A6A5A /* NewEntryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryDataSource.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				084AC1841F52CDC400E057AB /* Assets.xcassets */,
 				084AC1861F52CDC400E057AB /* LaunchScreen.storyboard */,
 				084AC1891F52CDC400E057AB /* Info.plist */,
+				085DB9F11F77AF3D00BA2338 /* LocationManager.swift */,
 			);
 			name = "Helper files";
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				083B882D1F52E38500E74BEC /* Location.swift in Sources */,
 				08AF12CB1F7149AC00FCB4AB /* EntryDataSource.swift in Sources */,
 				084AC17B1F52CDC400E057AB /* AppDelegate.swift in Sources */,
+				085DB9F21F77AF3D00BA2338 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

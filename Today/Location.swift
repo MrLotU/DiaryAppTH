@@ -17,17 +17,17 @@ class Location: NSManagedObject {
         let location = NSEntityDescription.insertNewObject(forEntityName: Location.entityName, into: CoreDataController.sharedInstance.managedObjectContext) as! Location
         
         location.longtitude = long 
-        location.latitude = lat
+        location.lattitude = lat
         
         return location
     }
 }
 
 extension Location {
-    @NSManaged var latitude: Double
+    @NSManaged var lattitude: Double
     @NSManaged var longtitude: Double
     
     var location: CLLocation {
-        return CLLocation(latitude: latitude, longitude: longtitude)
+        return CLLocation(latitude: lattitude, longitude: longtitude)
     }
 }
