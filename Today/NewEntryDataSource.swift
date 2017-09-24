@@ -35,8 +35,6 @@ class NewEntryDataSource: NSObject {
         let picker = ImagePicker(presentingViewController: self.tableViewController)
         return picker
     }()
-    
-    
 }
 
 //MARK: - UITableViewDelegate
@@ -113,7 +111,11 @@ extension NewEntryDataSource: UITableViewDataSource {
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
             let entry = fetchedResultsController.object(at: index) as! Entry
+            cell.entry = entry
             cell.isSelected = false
+            
+            imagePicker.delegate = cell
+            cell.addImageButton.addTarget(imagePicker, action: #selector(imagePicker.presentImagePickerController), for: .touchUpInside)
         
             cell.title = entry.title
             cell.content = entry.content

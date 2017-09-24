@@ -57,6 +57,8 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
     
+    var entry: Entry!
+    
     // MARK: Functions
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -112,3 +114,13 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
 }
+
+extension EntryTableViewCell: ImagePickerDelegate {
+    func imagePicker(_ picker: ImagePicker, didFinishPickingImage image: UIImage) {
+        picker.dismissImagePickerController(animated: true) {
+            self.thumbnailImage = image
+            self.entry.addImage(image)
+        }
+    }
+}
+

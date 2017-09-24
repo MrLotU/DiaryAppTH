@@ -12,7 +12,7 @@ import CoreLocation
 class EntriesTableViewController: UITableViewController {
     
     lazy var dataSource: EntryDataSource = {
-        return EntryDataSource(fetchRequest: Entry.allEntriesRequest, tableView: self.tableView)
+        return EntryDataSource(fetchRequest: Entry.allEntriesRequest, tableView: self.tableView, controller: self)
     }()
 
     override func viewDidLoad() {
@@ -28,10 +28,6 @@ class EntriesTableViewController: UITableViewController {
         let barButtonItem = UIBarButtonItem(customView: button)
         
         self.navigationItem.setRightBarButton(barButtonItem, animated: false)
-        
-        for _ in 1...10 {
-            Entry.entryWith("Woah! Some content! That's pretty cool eh? Now, let's add some more so that it will spread over multiple lines.", location: nil, image: nil, state: nil)
-        }
     
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE, MMM d, yyyy"

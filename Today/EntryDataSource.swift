@@ -12,12 +12,14 @@ import CoreData
 import CoreLocation
 
 class EntryDataSource: NSObject {
+    fileprivate let tableViewController: UITableViewController
     fileprivate let tableView: UITableView
     fileprivate let managedObjectContext = CoreDataController.sharedInstance.managedObjectContext
     fileprivate let fetchedResultsController: EntryFetchResultsController
     
-    init(fetchRequest: NSFetchRequest<NSFetchRequestResult>, tableView: UITableView) {
+    init(fetchRequest: NSFetchRequest<NSFetchRequestResult>, tableView: UITableView, controller: UITableViewController) {
         self.tableView = tableView
+        self.tableViewController = controller
         
         self.fetchedResultsController = EntryFetchResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, tableView: self.tableView)
         
@@ -28,6 +30,11 @@ class EntryDataSource: NSObject {
         self.fetchedResultsController.performFetch(withPredicate: predicate)
         tableView.reloadData()
     }
+    
+    lazy var imagePicker: ImagePicker = {
+        let picker = ImagePicker(presentingViewController: self.tableViewController)
+        return picker
+    }()
 }
 
 //MARK: - UITableViewDelegate
@@ -79,7 +86,11 @@ extension EntryDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as! EntryTableViewCell
         let entry = fetchedResultsController.object(at: indexPath) as! Entry
+        cell.entry = entry
         cell.isSelected = false
+        
+        imagePicker.delegate = cell
+        cell.addImageButton.addTarget(imagePicker, action: #selector(imagePicker.presentImagePickerController), for: .touchUpInside)
         
         cell.title = entry.title
         cell.content = entry.content

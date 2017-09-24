@@ -41,6 +41,7 @@ class NewEntryTableViewCell: UITableViewCell {
     var location: CLLocation?
     var content: String!
     var thumnailImage: UIImage?
+    var entry: Entry!
     fileprivate var locationManager: LocationManager!
     
     @IBAction func buttonPressed(_ sender: UIButton) {

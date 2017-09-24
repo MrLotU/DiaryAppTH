@@ -215,11 +215,13 @@
 					084AC1761F52CDC400E057AB = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = CH45DPWU9R;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					084AC18D1F52CDC400E057AB = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = CH45DPWU9R;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 084AC1761F52CDC400E057AB;
 					};
