@@ -19,7 +19,9 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var locationlabel: UILabel!
     @IBOutlet weak var locationImageView: UIImageView!
-    @IBOutlet weak var removePostButton: UIButton!
+    @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var editPostButton: UIButton!
+    @IBOutlet weak var deletePostButton: UIButton!
     
     // MARK: DidSet Variables
     var stateImage: UIImage? {
@@ -59,7 +61,9 @@ class EntryTableViewCell: UITableViewCell {
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         switch sender {
-        case removePostButton: print("Pressed the remove post button! Woah!")
+        case addImageButton: print("Pressed the add image button! Woah!")
+        case editPostButton: print("Pressed the edit post button! Woah!")
+        case deletePostButton: print("Pressed the delete post button! Woah!")
         default: print("How even did you get here? This shouldn't be possible")
         }
     }
@@ -73,7 +77,9 @@ class EntryTableViewCell: UITableViewCell {
             self.contentLabel.isHidden = true
             self.locationImageView.isHidden = true
             self.locationlabel.isHidden = true
-            self.removePostButton.isHidden = false
+            self.addImageButton.isHidden = false
+            self.editPostButton.isHidden = false
+            self.deletePostButton.isHidden = false
             self.backgroundColor = UIColor(red: 74/255, green: 74/255, blue: 74/255, alpha: 1.0)
         } else {
             self.stateImageView.isHidden = false
@@ -83,7 +89,9 @@ class EntryTableViewCell: UITableViewCell {
             self.locationImageView.isHidden = false
             self.locationlabel.isHidden = false
             
-            self.removePostButton.isHidden = true
+            self.addImageButton.isHidden = true
+            self.editPostButton.isHidden = true
+            self.deletePostButton.isHidden = true
 
             
             self.stateImageView.image = self.stateImage
