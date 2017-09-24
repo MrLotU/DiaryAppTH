@@ -30,11 +30,6 @@ class NewEntryDataSource: NSObject {
         self.fetchedResultsController.performFetch(withPredicate: predicate)
         tableView.reloadData()
     }
-    
-    lazy var imagePicker: ImagePicker = {
-        let picker = ImagePicker(presentingViewController: self.tableViewController)
-        return picker
-    }()
 }
 
 //MARK: - UITableViewDelegate
@@ -98,11 +93,7 @@ extension NewEntryDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section, indexPath.row) == (0, 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "newEntryCell", for: indexPath) as! NewEntryTableViewCell
-            
-            cell.setThumbnailButton.addTarget(imagePicker, action: #selector(imagePicker.presentImagePickerController), for: .touchUpInside)
-            
-            imagePicker.delegate = cell
-            
+            cell.tableViewController = self.tableViewController
             return cell
         } else {
             var index = indexPath
@@ -114,9 +105,8 @@ extension NewEntryDataSource: UITableViewDataSource {
             cell.entry = entry
             cell.isSelected = false
             
-            imagePicker.delegate = cell
-            cell.addImageButton.addTarget(imagePicker, action: #selector(imagePicker.presentImagePickerController), for: .touchUpInside)
-        
+            cell.tableViewController = self.tableViewController
+            
             cell.title = entry.title
             cell.content = entry.content
             cell.stateImage = entry.stateImage

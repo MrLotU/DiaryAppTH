@@ -25,8 +25,6 @@ class NewEntryTableViewCell: UITableViewCell {
     @IBOutlet weak var stateImageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
     
-    let imagePickerController = UIImagePickerController()
-    
     var state: Entry.EntryState = .none {
         didSet {
             switch self.state {
@@ -43,6 +41,7 @@ class NewEntryTableViewCell: UITableViewCell {
     var thumnailImage: UIImage?
     var entry: Entry!
     fileprivate var locationManager: LocationManager!
+    var tableViewController: UITableViewController!
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         switch sender {
@@ -64,11 +63,19 @@ class NewEntryTableViewCell: UITableViewCell {
             } else {
                 self.state = .bad
             }
+        case setThumbnailButton:
+            imagePicker.presentImagePickerController()
         case addLocationButton:
             self.getLocation()
         default: break
         }
     }
+    
+    lazy var imagePicker: ImagePicker = {
+        let picker = ImagePicker(presentingViewController: self.tableViewController)
+        picker.delegate = self
+        return picker
+    }()
     
     func saveContent(completion: ((String) -> ())) {
         if content == nil || content == "" {
@@ -147,3 +154,4 @@ extension NewEntryTableViewCell: ImagePickerDelegate {
         }
     }
 }
+

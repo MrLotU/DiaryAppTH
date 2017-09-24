@@ -57,13 +57,20 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
     
+    lazy var imagePicker: ImagePicker = {
+        let picker = ImagePicker(presentingViewController: self.tableViewController)
+        picker.delegate = self
+        return picker
+    }()
+    
     var entry: Entry!
+    var tableViewController: UITableViewController!
     
     // MARK: Functions
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         switch sender {
-        case addImageButton: print("Pressed the add image button! Woah!")
+        case addImageButton: imagePicker.presentImagePickerController()
         case editPostButton: print("Pressed the edit post button! Woah!")
         case deletePostButton: print("Pressed the delete post button! Woah!")
         default: print("How even did you get here? This shouldn't be possible")
@@ -114,6 +121,8 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
 }
+
+//MARK: - ImagePickerControllerDelegate
 
 extension EntryTableViewCell: ImagePickerDelegate {
     func imagePicker(_ picker: ImagePicker, didFinishPickingImage image: UIImage) {
