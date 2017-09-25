@@ -40,4 +40,22 @@ class EntriesTableViewController: UITableViewController {
     func newPostButtonPressed() {
         performSegue(withIdentifier: "createNewPost", sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editPost" {
+            let destVC = segue.destination as! EditPostTableViewController
+            destVC.entry = sender as! Entry
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+

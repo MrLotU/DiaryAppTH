@@ -33,6 +33,13 @@ class NewPostTableViewController: UITableViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editPost" {
+            let destVC = segue.destination as! EditPostTableViewController
+            destVC.entry = sender as! Entry
+        }
+    }
 }
 
 
