@@ -29,7 +29,9 @@ class Entry: NSManagedObject {
         entry.content = content
         entry.date = Date()
         entry.title = dateFormatter.string(from: entry.date)
-        
+        entry.addImage(UIImage(named: "icn_noimage")!)
+        entry.addLocation(CLLocation())
+        entry.setState(.none)
         return entry
     }
     

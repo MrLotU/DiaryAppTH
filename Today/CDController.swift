@@ -13,6 +13,10 @@ class CoreDataController {
     
     static let sharedInstance = CoreDataController()
     
+    static func deleteAll() {
+        CoreDataController.sharedInstance.deleteContext()
+    }
+    
     static func save() {
         CoreDataController.sharedInstance.saveContext()
     }
@@ -53,14 +57,20 @@ class CoreDataController {
         return managedObjectContext
     }()
     
-    //MARK: Save the data
+    //MARK: Functions
+    
+    func deleteContext() {
+        for object in managedObjectContext.registeredObjects {
+            managedObjectContext.delete(object)
+        }
+    }
     
     func saveContext() {
         if managedObjectContext.hasChanges {
             do {
                 try managedObjectContext.save()
-            } catch {
-                let nserror = error as NSError
+            } catch (let e) {
+                let nserror = e as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
             }

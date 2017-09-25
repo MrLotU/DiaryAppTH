@@ -12,46 +12,38 @@ import CoreLocation
 
 class TodayTests: XCTestCase {
     
-    var entry: Entry!
+    var fakeEntry: Entry!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        entry = MockEntry.mockEntryWith("Some content", location: CLLocation(), image: UIImage(), state: .none)
+        fakeEntry = Entry.entryWith(content: "Fake Entry 1")
+        CoreDataController.save()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        CoreDataController.deleteAll()
+        CoreDataController.save()
         super.tearDown()
     }
     
     func testEntryCreation() {
-        
-        XCTAssertNotNil(entry, "Entry is NIL - Creation failed!")
+        XCTAssertNotNil(fakeEntry, "Entry is NIL - Creation failed!")
+    }
+    
+    func testEntryInsertion() {
+        Entry.entryWith("Fake Entry 2", location: nil, image: nil, state: nil)
+        CoreDataController.save()
+        XCTAssert(CoreDataController.sharedInstance.managedObjectContext.registeredObjects.count == 2, "we have more or less than 2 entries")
     }
     
     func testEntryDeletion() {
-        
+        CoreDataController.sharedInstance.managedObjectContext.delete(fakeEntry)
+        XCTAssert(fakeEntry.isDeleted, "Entry is not DELETED - Deletion failed!")
     }
     
     func testEntryEditting() {
         
     }
-    
-    class MockEntry: Entry {
-        class func mockEntryWith(_ content: String, location: CLLocation?, image: UIImage?, state: EntryState?) -> Entry {
-            let entry = MockEntry.entryWith(content: content)
-            if let loc = location {
-                entry.addLocation(loc)
-            }
-            if let image = image {
-                entry.addImage(image)
-            }
-            if let state = state {
-                entry.setState(state)
-            }
-            return entry
-        }
-    }
-    
 }
