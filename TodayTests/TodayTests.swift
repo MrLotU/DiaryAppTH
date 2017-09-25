@@ -7,13 +7,17 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import Today
 
 class TodayTests: XCTestCase {
     
+    var entry: Entry!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        entry = MockEntry.mockEntryWith("Some content", location: CLLocation(), image: UIImage(), state: .none)
     }
     
     override func tearDown() {
@@ -21,15 +25,32 @@ class TodayTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testEntryCreation() {
+        
+        XCTAssertNotNil(entry, "Entry is NIL - Creation failed!")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testEntryDeletion() {
+        
+    }
+    
+    func testEntryEditting() {
+        
+    }
+    
+    class MockEntry: Entry {
+        class func mockEntryWith(_ content: String, location: CLLocation?, image: UIImage?, state: EntryState?) -> Entry {
+            let entry = MockEntry.entryWith(content: content)
+            if let loc = location {
+                entry.addLocation(loc)
+            }
+            if let image = image {
+                entry.addImage(image)
+            }
+            if let state = state {
+                entry.setState(state)
+            }
+            return entry
         }
     }
     

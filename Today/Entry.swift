@@ -40,6 +40,8 @@ class Entry: NSManagedObject {
         }
         if let image = image {
             entry.addImage(image)
+        } else {
+            entry.addImage(UIImage(named: "icn_noimage")!)
         }
         if let state = state {
             entry.setState(state)
