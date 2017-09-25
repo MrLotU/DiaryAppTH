@@ -72,7 +72,7 @@ class EntryTableViewCell: UITableViewCell {
         switch sender {
         case addImageButton: imagePicker.presentImagePickerController()
         case editPostButton: self.tableViewController.performSegue(withIdentifier: "editPost", sender: self.entry)
-        case deletePostButton: print("Pressed the delete post button! Woah!")
+        case deletePostButton: CoreDataController.sharedInstance.managedObjectContext.delete(entry)
         default: print("How even did you get here? This shouldn't be possible")
         }
     }

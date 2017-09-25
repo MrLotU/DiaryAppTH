@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class EditPostTableViewController: UITableViewController {
     
@@ -47,8 +48,33 @@ class EditPostTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editEntryCell", for: indexPath) as! EditEntryTableViewCell
         
+        cell.tableViewController = self
+        cell.entry = self.entry
         
+        cell.setThumbnailButton.setImage(UIImage(data: entry.image!), for: .normal)
+        cell.thumnailImage = UIImage(data: entry.image!)
+        cell.content = entry.content
+        cell.contentTextView.text = entry.content
+        cell.state = entry.stateValue
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE, MMM d, yyyy"
+        cell.titleLabel.text = dateFormatter.string(from: Date())
+        if let loc = entry.location {
+            let location = loc.location
+            let geoCoder = CLGeocoder()
+            geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                guard let placemarks = placemarks else { return }
+                let placemark = placemarks[0]
+                guard let name = placemark.name, let city = placemark.locality, let area = placemark.administrativeArea else { return }
+                
+                cell.addLocationButton.isHidden = true
+                cell.locationLabel.isHidden = false
+                cell.activityIndicator.isHidden = true
+                cell.locationImageView.isHidden = false
+                cell.locationLabel.text = "\(name), \(city), \(area)"
+            }
+        }
         return cell
     }
 }
