@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreLocation
+import CoreData
 @testable import Today
 
 class TodayTests: XCTestCase {
@@ -24,7 +25,6 @@ class TodayTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         CoreDataController.deleteAll()
-        CoreDataController.save()
         super.tearDown()
     }
     
@@ -33,9 +33,22 @@ class TodayTests: XCTestCase {
     }
     
     func testEntryInsertion() {
+        var results: [Any] = []
+        do {
+            results = try CoreDataController.sharedInstance.managedObjectContext.fetch(Entry.allEntriesRequest)
+        } catch {
+            XCTAssert(false, "Getting results failed!")
+        }
+        let entriesCount = results.count
         Entry.entryWith("Fake Entry 2", location: nil, image: nil, state: nil)
-        CoreDataController.save()
-        XCTAssert(CoreDataController.sharedInstance.managedObjectContext.registeredObjects.count == 2, "we have more or less than 2 entries")
+        do {
+            results = try CoreDataController.sharedInstance.managedObjectContext.fetch(Entry.allEntriesRequest)
+        } catch {
+            XCTAssert(false, "Getting results failed!")
+        }
+        let newEntriesCount = results.count
+        print("NewEntriesCount: \(newEntriesCount), oldEntriesCount: \(entriesCount), subtracted: \(newEntriesCount - entriesCount)")
+        XCTAssert(newEntriesCount - entriesCount == 1, "More than 1 new entry got added to the ManagedObjectContext")
     }
     
     func testEntryDeletion() {

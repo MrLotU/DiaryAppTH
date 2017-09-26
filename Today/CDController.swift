@@ -14,7 +14,7 @@ class CoreDataController {
     static let sharedInstance = CoreDataController()
     
     static func deleteAll() {
-        CoreDataController.sharedInstance.deleteContext()
+        CoreDataController.sharedInstance.deleteAllContext()
     }
     
     static func save() {
@@ -59,9 +59,19 @@ class CoreDataController {
     
     //MARK: Functions
     
-    func deleteContext() {
-        for object in managedObjectContext.registeredObjects {
-            managedObjectContext.delete(object)
+    func deleteAllContext() {
+        let fetchRequest = Entry.allEntriesRequest
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try managedObjectContext.fetch(fetchRequest)
+            for result in results {
+                let managedObject = result as! NSManagedObject
+                managedObjectContext.delete(managedObject)
+            }
+            saveContext()
+        } catch (let e) {
+            let nserror = e as NSError
+            fatalError("Failed to delete all entries \(nserror), \(nserror.userInfo)")
         }
     }
     
@@ -71,8 +81,7 @@ class CoreDataController {
                 try managedObjectContext.save()
             } catch (let e) {
                 let nserror = e as NSError
-                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-                abort()
+                fatalError("Failed to save \(nserror), \(nserror.userInfo)")
             }
         }
     }
