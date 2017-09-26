@@ -57,6 +57,7 @@ class TodayTests: XCTestCase {
     }
     
     func testEntryEditting() {
-        
+        fakeEntry.content = "Some new content -- Entry is now edited!"
+        XCTAssert(fakeEntry.content == "Some new content -- Entry is now edited!", "Entry was not sucessfully edited or was edited to the wrong content")
     }
 }
