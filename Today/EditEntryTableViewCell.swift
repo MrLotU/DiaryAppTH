@@ -36,7 +36,11 @@ class EditEntryTableViewCell: UITableViewCell {
     }
     
     var location: CLLocation?
-    var content: String!
+    var content: String! {
+        didSet {
+            self.numberOfCharsLabel.text = "\(self.content.characters.count) / 200"
+        }
+    }
     var thumnailImage: UIImage?
     var entry: Entry!
     fileprivate var locationManager: LocationManager!
@@ -137,13 +141,6 @@ class EditEntryTableViewCell: UITableViewCell {
         
         self.titleLabel.text = dateFormatter.string(from: Date())
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
 
 //MARK: - UITextViewDelegate
