@@ -22,7 +22,7 @@ class EntriesTableViewController: UITableViewController {
         self.tableView.delegate = dataSource
         
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "icn_write"), for: .normal)
+        button.setImage(UIImage(named: "Icn_write"), for: .normal)
         button.addTarget(self, action: #selector(newPostButtonPressed), for: .touchUpInside)
         
         let barButtonItem = UIBarButtonItem(customView: button)
